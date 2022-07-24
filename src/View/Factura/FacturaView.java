@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Factura;
+
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -81,11 +84,10 @@ public class FacturaView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 21, Short.MAX_VALUE)))
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(30, 30, 30))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAgregar)
@@ -181,4 +183,37 @@ public class FacturaView extends javax.swing.JFrame {
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnGuardar(){
+        return this.btnAgregar;
+    }
+    
+    public JButton getBtnActualizar(){
+        return this.btnActualizar;
+    }
+    
+    public JButton getBtnBuscar(){
+        return this.btnBuscar;
+    }
+    
+    public JButton getBtnCancelar(){
+        return this.btnCancelar;
+    }
+    
+    public JTextField getTxtCodigo(){
+        return this.txtCodigo;
+    }
+    
+    public JTextField getTxtIsv(){
+        return this.txtIsv;
+    }
+    
+    public JTextField getTxtSubtotal(){
+        return this.txtSubtotal;
+    }
+    
+    public JTextField getTxtTotal(){
+        return this.txtTotal;
+    }
+    
 }

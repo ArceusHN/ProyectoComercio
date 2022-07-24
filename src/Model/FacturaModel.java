@@ -9,6 +9,8 @@ import Config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,5 +59,56 @@ public class FacturaModel {
     public void setTotal(float Total) {
         this.Total = Total;
     }
+
+    public float getSubtotal() {
+        return Subtotal;
+    }
+
+    public void setSubtotal(float Subtotal) {
+        this.Subtotal = Subtotal;
+    }
     
+    // CRUD
+    
+    public ArrayList<FacturaModel> ListarFactura(){
+        ArrayList<FacturaModel> listado = new ArrayList<>();
+        
+        try{
+            String query = "SELECT * FROM FacturasProveedor";
+            con = cnx.getConnection();
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                FacturaModel factura = new FacturaModel();
+                factura.setId(rs.getInt("Id"));
+                factura.setIsv(rs.getFloat("ISV"));
+                factura.setIsv(rs.getFloat("SubTotal"));
+                factura.setIsv(rs.getFloat("SubTotal"));
+                
+                listado.add(factura);
+            }
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        return listado;
+    }
+    
+    public void AgregarFactura(){
+        try{
+            String query = "INSERT INTO FacturasProveedor(SubTotal,ISV,Total,FechaAgrega) VALUES(?, ?, ?,CURRENT_DATE())";
+            con = cnx.getConnection();
+            ps = con.prepareStatement(query);
+            ps.setFloat(1, this.Subtotal);
+            ps.setFloat(2, this.Isv);
+            ps.setFloat(3, this.Total);
+            
+            ps.executeUpdate();
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
 }

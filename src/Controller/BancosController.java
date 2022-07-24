@@ -25,7 +25,7 @@ public class BancosController {
     }
     
     public void InicializarVista(){
-        BancoVista.getTxtDescripcion().setText("Hola soy omar");
+        BancoVista.getTxtDescripcion().setText("");
         
         ArrayList<BancoModel> listado = bancoModelo.ListarBanco();
         BancoModel[] comboBoxModel = listado.toArray(new BancoModel[0]);  
@@ -39,7 +39,11 @@ public class BancosController {
     }
     
     public void GuardarBanco(){
+        String descripcion = BancoVista.getTxtDescripcion().getText();
+        BancoModel bancoModelo = new BancoModel();
+        bancoModelo.setDescripcion(descripcion);
         
+        bancoModelo.AgregarBanco();
     }
     
     public void CancelarOperacion(){
