@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.BancoModel;
-import View.Banco;
+import View.BancoView;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
@@ -16,27 +16,37 @@ import javax.swing.DefaultComboBoxModel;
  */
 
 public class BancosController {
-    private Banco _bancos;
+    private BancoView BancoVista;
     private BancoModel bancoModelo = new BancoModel();
    
-    public BancosController(Banco bancos){
-        this._bancos = bancos;
+    public BancosController(BancoView bancos){
+        this.BancoVista = bancos;
         InicializarVista();
     }
     
     public void InicializarVista(){
-        _bancos.getTxtDescripcion().setText("Hola soy omar");
+        BancoVista.getTxtDescripcion().setText("Hola soy omar");
         
         ArrayList<BancoModel> listado = bancoModelo.ListarBanco();
         BancoModel[] comboBoxModel = listado.toArray(new BancoModel[0]);  
-        _bancos.getCboBancos().setModel(new DefaultComboBoxModel<BancoModel>(comboBoxModel));
+        BancoVista.getCboBancos().setModel(new DefaultComboBoxModel<BancoModel>(comboBoxModel));
     }
     
     public void InicializarControlador(){
-        _bancos.getBtnGuardar().addActionListener(e -> GuardarBanco()); 
+        BancoVista.getBtnGuardar().addActionListener(e -> GuardarBanco()); 
+        BancoVista.getBtnCancelar().addActionListener(e -> CancelarOperacion());
+        BancoVista.getCboBancos().addActionListener(e -> MostrarId());
     }
     
     public void GuardarBanco(){
         
+    }
+    
+    public void CancelarOperacion(){
+        BancoVista.dispose();
+    }
+    
+    public void MostrarId(){
+        System.out.println(BancoVista.getCboBancos().getItemAt(this. BancoVista.getCboBancos().getSelectedIndex()).getId());
     }
 }

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.BancoModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -13,12 +14,12 @@ import javax.swing.JTextField;
  *
  * @author Administrator
  */
-public class Banco extends javax.swing.JFrame {
+public class BancoView extends javax.swing.JFrame {
 
     /**
      * Creates new form Banco
      */
-    public Banco() {
+    public BancoView() {
         initComponents();
     }
 
@@ -110,20 +111,21 @@ public class Banco extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Banco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Banco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Banco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Banco.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Banco().setVisible(true);
+                new BancoView().setVisible(true);
             }
         });
     }
@@ -131,7 +133,7 @@ public class Banco extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cboBancos;
+    private javax.swing.JComboBox<BancoModel> cboBancos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtDescripcion;
@@ -145,7 +147,11 @@ public class Banco extends javax.swing.JFrame {
         return this.btnGuardar;
     }
     
-    public JComboBox getCboBancos(){
+    public JComboBox<BancoModel> getCboBancos(){
         return this.cboBancos;
     }
+    
+    public JButton getBtnCancelar(){
+        return this.btnCancelar;
+    } 
 }

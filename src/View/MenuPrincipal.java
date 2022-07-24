@@ -69,7 +69,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBancoActionPerformed
         BancosController bancoControlador;
-        Banco bancoVista = new Banco();
+        BancoView bancoVista = new BancoView();
         
         bancoControlador = new BancosController(bancoVista);
         bancoControlador.InicializarControlador();

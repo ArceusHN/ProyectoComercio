@@ -52,6 +52,11 @@ public class BancoModel{
         this.Descripcion = Descripcion;
     }
     
+     @Override
+    public String toString(){
+       return this.Descripcion;
+    }
+    
     // CRUD
     
     public ArrayList<BancoModel> ListarBanco(){
