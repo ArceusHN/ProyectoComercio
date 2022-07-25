@@ -6,6 +6,8 @@
 package View;
 
 import Controller.BancosController;
+import Controller.ProductosController;
+import View.Productos.MainProductos;
 
 /**
  *
@@ -31,6 +33,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnBanco = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnMainProductos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,16 +47,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Productos");
+
+        btnMainProductos.setText("Productos");
+        btnMainProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainProductosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMainProductos)))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -61,7 +80,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(btnBanco))
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(btnMainProductos))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         pack();
@@ -76,6 +99,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         bancoControlador.InicializarVista();
         bancoVista.setVisible(true);
     }//GEN-LAST:event_btnBancoActionPerformed
+
+    private void btnMainProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainProductosActionPerformed
+       ProductosController productosControlador;
+        MainProductos mainProductos = new MainProductos();
+        
+        productosControlador = new ProductosController(mainProductos);
+        productosControlador.InicializarControlador();
+        productosControlador.InicializarVista();
+        mainProductos.setVisible(true);
+    }//GEN-LAST:event_btnMainProductosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +147,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBanco;
+    private javax.swing.JButton btnMainProductos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
