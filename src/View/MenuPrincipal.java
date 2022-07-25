@@ -6,6 +6,7 @@
 package View;
 
 import Controller.BancosController;
+import Controller.BancosProveedoresController;
 import Controller.FacturaController;
 import Controller.ProveedoresController;
 import Controller.ProductosController;
@@ -173,7 +174,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        BancosProveedoresController bancosProveedoresControlador;
+        BancosProveedoresView bancosProveedoresVista = new BancosProveedoresView();
+        
+        bancosProveedoresControlador = new BancosProveedoresController(bancosProveedoresVista);
+        bancosProveedoresControlador.InicializarControlador();
+        bancosProveedoresControlador.InicializarVista();
+        bancosProveedoresVista.setVisible(true); 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
