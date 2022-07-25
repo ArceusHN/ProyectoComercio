@@ -6,36 +6,40 @@
 package Model;
 
 import Config.Conexion;
-import javax.swing.JOptionPane;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Administrator
+ * @author Robredo
  */
-public class BancoModel{
-    private Conexion cnx = new Conexion();
+public class ProveedoresModel {
+     private Conexion cnx = new Conexion();
     private Connection con;
     private PreparedStatement ps;
     private ResultSet rs;
     
     private int Id;
-    private String Descripcion;
+    private String Nombre;
+    private String Direccion;
+    private String Telefono;
+    private String CorreoElectronico;
    
     // Constructores
-    public BancoModel() {
+    public ProveedoresModel() {
     }
 
-    public BancoModel(int Id, String Descripcion) {
+    public ProveedoresModel(int Id, String Nombre,String Direccion,String Telefono,String CorreoElectronico) {
         this.Id = Id;
-        this.Descripcion = Descripcion;
+        this.Nombre = Nombre;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
+        this.CorreoElectronico = CorreoElectronico;
     }
 
-    // Propiedades
     public int getId() {
         return Id;
     }
@@ -44,19 +48,38 @@ public class BancoModel{
         this.Id = Id;
     }
 
-    public String getDescripcion() {
-        return Descripcion;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
-    
-     @Override
-    public String toString(){
-       return this.Descripcion;
+
+    public String getDireccion() {
+        return Direccion;
     }
-    
+
+    public void setDireccion(String Direccion) {
+        this.Direccion = Direccion;
+    }
+
+    public String getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(String Telefono) {
+        this.Telefono = Telefono;
+    }
+
+    public String getCorreoElectronico() {
+        return CorreoElectronico;
+    }
+
+    public void setCorreoElectronico(String CorreoElectronico) {
+        this.CorreoElectronico = CorreoElectronico;
+    }
+
     // CRUD
     
     public ArrayList<BancoModel> ListarBanco(){
@@ -83,12 +106,15 @@ public class BancoModel{
         return listado;
     }
     
-    public void AgregarBanco(){
+    public void AgregarProveedor(){
         try{
-            String query = "INSERT INTO Bancos(Descripcion, FechaAgrega) VALUES(?,CURRENT_DATE())";
+            String query = "INSERT INTO Proveedor(Nombre,Direccion,Telefono,CorreoElectronico, FechaAgrega) VALUES(?,?,?,?,CURRENT_DATE())";
             con = cnx.getConnection();
             ps = con.prepareStatement(query);
-            ps.setString(1, Descripcion);
+            ps.setString(1, Nombre);
+            ps.setString(2, Direccion);
+            ps.setString(3, Telefono);
+            ps.setString(4, CorreoElectronico);
             
             ps.executeUpdate();
             JOptionPane.showMessageDialog (null, "Registro Guardado!", "Guardar", JOptionPane.INFORMATION_MESSAGE);
