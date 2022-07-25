@@ -27,17 +27,27 @@ public class ProveedoresModel {
     private String Direccion;
     private String Telefono;
     private String CorreoElectronico;
+    private String FechaAgrega;
    
     // Constructores
     public ProveedoresModel() {
     }
 
-    public ProveedoresModel(int Id, String Nombre,String Direccion,String Telefono,String CorreoElectronico) {
+    public ProveedoresModel(int Id, String Nombre,String Direccion,String Telefono,String CorreoElectronico, String FechaAgrega) {
         this.Id = Id;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
         this.CorreoElectronico = CorreoElectronico;
+        this.FechaAgrega = FechaAgrega;
+    }
+
+    public String getFechaAgrega() {
+        return FechaAgrega;
+    }
+
+    public void setFechaAgrega(String FechaAgrega) {
+        this.FechaAgrega = FechaAgrega;
     }
 
     public int getId() {
@@ -82,21 +92,26 @@ public class ProveedoresModel {
 
     // CRUD
     
-    public ArrayList<BancoModel> ListarBanco(){
-        ArrayList<BancoModel> listado = new ArrayList<>();
+ public ArrayList<ProveedoresModel> ListarProveedores(){
+        ArrayList<ProveedoresModel> listado = new ArrayList<>();
         
         try{
-            String query = "SELECT * FROM Bancos";
+            String query = "SELECT * FROM Proveedor";
             con = cnx.getConnection();
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
             
             while(rs.next()){
-                BancoModel banco = new BancoModel();
-                banco.setId(rs.getInt("Id"));
-                banco.setDescripcion(rs.getString("Descripcion"));
+                ProveedoresModel proveedores = new ProveedoresModel();
+                proveedores.setId(rs.getInt("Id"));
+                proveedores.setNombre(rs.getString("Nombre"));
+                proveedores.setDireccion(rs.getString("Direccion"));
+                proveedores.setTelefono(rs.getString("Telefono"));
+                proveedores.setCorreoElectronico(rs.getString("CorreoElectronico"));
+                proveedores.setFechaAgrega(rs.getString("FechaAgrega"));
+
                 
-                listado.add(banco);
+                listado.add(proveedores);
             }
             
         }catch(Exception ex){
@@ -105,10 +120,12 @@ public class ProveedoresModel {
         
         return listado;
     }
+
+
     
     public void AgregarProveedor(){
         try{
-            String query = "INSERT INTO Proveedor(Nombre,Direccion,Telefono,CorreoElectronico, FechaAgrega) VALUES(?,?,?,?,CURRENT_DATE())";
+            String query = "INSERT INTO Proveedor(Nombre,Direccion,Telefono,CorreoElectronico,FechaAgrega) VALUES(?,?,?,?,CURRENT_DATE())";
             con = cnx.getConnection();
             ps = con.prepareStatement(query);
             ps.setString(1, Nombre);
@@ -118,6 +135,26 @@ public class ProveedoresModel {
             
             ps.executeUpdate();
             JOptionPane.showMessageDialog (null, "Registro Guardado!", "Guardar", JOptionPane.INFORMATION_MESSAGE);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+         public void ActualizarProveedor(){
+        try{
+            String query = "Update Proveedor set Nombre = ?, Direccion = ?, Telefono = ?, CorreoElectronico = ? where Id = ?";
+            con = cnx.getConnection();
+            ps = con.prepareStatement(query);
+         
+            ps.setString(1, Nombre);
+            ps.setString(2, Direccion);
+            ps.setString(3, Telefono);
+            ps.setString(4, CorreoElectronico);
+            ps.setInt(5, Id);
+            
+            
+            ps.executeUpdate();
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());

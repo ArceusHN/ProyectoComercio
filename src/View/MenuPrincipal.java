@@ -13,6 +13,8 @@ import Controller.ProductosController;
 import View.Factura.FacturaView;
 import View.Productos.MainProductos;
 import View.Productos.ProductoView;
+import View.Proveedores.MainProveedores;
+import View.Proveedores.ProveedoresView;
 
 /**
  *
@@ -185,12 +187,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         ProveedoresController proveedoresControlador;
-        ProveedoresView proveedoresVista = new ProveedoresView();
+        MainProveedores proveedoresVista = new MainProveedores();
         
         proveedoresControlador = new ProveedoresController(proveedoresVista);
         proveedoresControlador.InicializarControlador();
         proveedoresControlador.InicializarVista();
-        proveedoresVista.setVisible(true);   
+        proveedoresVista.setVisible(true);        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
