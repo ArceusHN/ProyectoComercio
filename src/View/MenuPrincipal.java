@@ -7,6 +7,7 @@ package View;
 
 import Controller.BancosController;
 import Controller.BancosProveedoresController;
+import Controller.ComprasController;
 import Controller.FacturaController;
 import Controller.ProveedoresController;
 import Controller.ProductosController;
@@ -102,6 +103,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/carros.png"))); // NOI18N
         jMenuItem5.setText("Compras");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/facturacion.png"))); // NOI18N
@@ -216,6 +222,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         productosControlador.InicializarVista();
         productoVista.setVisible(true);   
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        ComprasController comprasControlador;
+        ComprasView comprasVista = new ComprasView();
+        
+        comprasControlador = new ComprasController(comprasVista);
+        comprasControlador.InicializarControlador();
+        comprasControlador.InicializarVista();
+        comprasVista.setVisible(true);   
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
