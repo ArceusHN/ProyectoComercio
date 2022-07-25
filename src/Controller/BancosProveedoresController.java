@@ -6,6 +6,7 @@ package Controller;
 
 import Model.BancoModel;
 import Model.BancosProveedoresModel;
+import Model.ProveedoresModel;
 import View.BancosProveedoresView;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -17,6 +18,7 @@ public class BancosProveedoresController {
     private BancosProveedoresView BancosProveedoresVista;
     private BancosProveedoresModel bancosproveedoresModelo = new BancosProveedoresModel();
     private BancoModel bancoModelo = new BancoModel();
+    private ProveedoresModel proveedoresModelo = new ProveedoresModel();
 
     public BancosProveedoresController(BancosProveedoresView bancosproveedores) {
         this.BancosProveedoresVista = bancosproveedores;
@@ -24,12 +26,14 @@ public class BancosProveedoresController {
     }
     
     public void InicializarVista(){
-        BancosProveedoresVista.getTxtNroCuentaBancaria().setText("123456789");
         
         ArrayList<BancoModel> listado = bancoModelo.ListarBanco();
         BancoModel[] comboBoxModel = listado.toArray(new BancoModel[0]);
         BancosProveedoresVista.getCboBancoId().setModel(new DefaultComboBoxModel<BancoModel>(comboBoxModel));
-//        BancosProveedoresVista.getCboProveedorId().setModel(new DefaultComboBoxModel<BancoModel>(comboBoxModel));
+        
+//        ArrayList<ProveedoresModel> listados = proveedoresModelo.ListarProveedores();
+//        ProveedoresModel[] comboBoxModelo = listados.toArray(new ProveedoresModel[0]);
+//        BancosProveedoresVista.getCboProveedorId().setModel(new DefaultComboBoxModel<ProveedoresModel>(comboBoxModelo));
     }
     
     public void InicializarControlador(){

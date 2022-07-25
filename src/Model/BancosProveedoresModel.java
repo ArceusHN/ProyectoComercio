@@ -95,6 +95,8 @@ public class BancosProveedoresModel {
             ps.setInt(3, this.ProveedorId);
             
             ps.executeUpdate();
+            JOptionPane.showMessageDialog (null, "Registro Guardado!", "Guardar", JOptionPane.INFORMATION_MESSAGE);
+            
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
