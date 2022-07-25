@@ -31,9 +31,9 @@ public class BancosProveedoresController {
         BancoModel[] comboBoxModel = listado.toArray(new BancoModel[0]);
         BancosProveedoresVista.getCboBancoId().setModel(new DefaultComboBoxModel<BancoModel>(comboBoxModel));
         
-//        ArrayList<ProveedoresModel> listados = proveedoresModelo.ListarProveedores();
-//        ProveedoresModel[] comboBoxModelo = listados.toArray(new ProveedoresModel[0]);
-//        BancosProveedoresVista.getCboProveedorId().setModel(new DefaultComboBoxModel<ProveedoresModel>(comboBoxModelo));
+        ArrayList<ProveedoresModel> listados = proveedoresModelo.ListarProveedores();
+        ProveedoresModel[] comboBoxModelo = listados.toArray(new ProveedoresModel[0]);
+        BancosProveedoresVista.getCboProveedorId().setModel(new DefaultComboBoxModel<ProveedoresModel>(comboBoxModelo));
     }
     
     public void InicializarControlador(){
