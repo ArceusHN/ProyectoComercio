@@ -147,6 +147,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cerrar.png"))); // NOI18N
         jMenuItem9.setText("Cerrar el Sistema");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem9);
 
         jMenuBar1.add(jMenu4);
@@ -232,6 +237,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         comprasControlador.InicializarVista();
         comprasVista.setVisible(true);   
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
