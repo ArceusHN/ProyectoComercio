@@ -25,17 +25,12 @@ public class BancosController {
     }
     
     public void InicializarVista(){
-        BancoVista.getTxtDescripcion().setText("");
-        
-        ArrayList<BancoModel> listado = bancoModelo.ListarBanco();
-        BancoModel[] comboBoxModel = listado.toArray(new BancoModel[0]);  
-        BancoVista.getCboBancos().setModel(new DefaultComboBoxModel<BancoModel>(comboBoxModel));
+        BancoVista.getTxtDescripcion().setText("");   
     }
     
     public void InicializarControlador(){
         BancoVista.getBtnGuardar().addActionListener(e -> GuardarBanco()); 
         BancoVista.getBtnCancelar().addActionListener(e -> CancelarOperacion());
-        BancoVista.getCboBancos().addActionListener(e -> MostrarId());
     }
     
     public void GuardarBanco(){
@@ -48,9 +43,5 @@ public class BancosController {
     
     public void CancelarOperacion(){
         BancoVista.dispose();
-    }
-    
-    public void MostrarId(){
-        System.out.println(BancoVista.getCboBancos().getItemAt(this. BancoVista.getCboBancos().getSelectedIndex()).getId());
     }
 }

@@ -89,6 +89,10 @@ public class ProveedoresModel {
     public void setCorreoElectronico(String CorreoElectronico) {
         this.CorreoElectronico = CorreoElectronico;
     }
+    @Override
+    public String toString(){
+       return this.Nombre;
+    }
 
     // CRUD
     
